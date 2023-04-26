@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 
-function ItemForm() {
+function ItemForm({addItem}) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
+  function handleSubmit(e){
+    e.preventDefault();
+   addItem({
+     name:name,
+     category:category,
+     isInCart:false
+   })
+  }
 
   return (
-    <form className="NewItem">
+    <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
         <input
